@@ -20,7 +20,7 @@ function Filter({ setHouses }) {
       console.log('response ---->', response)
       setLocations(response.data)
     } catch (error) {
-      error.message
+      console.error(error.message)
     }
   }
 
@@ -53,7 +53,7 @@ function Filter({ setHouses }) {
       console.log(queryString)
       setHouses(response.data)
     } catch (error) {
-      error.message
+      console.error(error.message)
     }
   }
 
