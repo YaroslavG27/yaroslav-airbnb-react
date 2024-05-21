@@ -9,9 +9,10 @@ function Houses() {
 
   const getHouses = async () => {
     try {
-      const url = 'https://haiku-bnb.onrender.com/houses'
+      const url = `${process.env.REACT_APP_API_URL}/houses`
+
       const response = await axios.get(url)
-      console.log(response)
+
       setHouses(response.data)
     } catch (error) {
       alert(error.message)
@@ -25,7 +26,6 @@ function Houses() {
   const listOfHouses = houses.map((house, index) => (
     <HouseCard key={index} house={house} id={house.house_id} />
   ))
-  console.log(listOfHouses)
 
   return (
     <div className="container mx-auto">
