@@ -10,10 +10,9 @@ function Houses() {
   const getHouses = async () => {
     try {
       const url = `${process.env.REACT_APP_API_URL}/houses`
-
       const response = await axios.get(url)
-
       setHouses(response.data)
+      console.log('respuesta data', response.data)
     } catch (error) {
       alert(error.message)
     }
