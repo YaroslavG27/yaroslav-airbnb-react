@@ -14,7 +14,7 @@ function HouseCard(props) {
           <div>
             <img
               className=" h-52 w-full rounded-t-md"
-              src={props.house.photo}
+              src={props.house.url}
               alt="house"
             />
           </div>
@@ -45,7 +45,7 @@ function HouseCard(props) {
                 <p className="ml-2">{props.house.rating}</p>
               </div>
               <p className="ml-2 text-sm">
-                {props.house.reviews}
+                {props.house.reviews_count}
                 <FontAwesomeIcon
                   icon={faCommentDots}
                   className="text-gray-400 ml-2"
