@@ -9,7 +9,8 @@ function Houses() {
 
   const getHouses = async () => {
     try {
-      const url = 'https://haiku-bnb.onrender.com/houses'
+      const url = `${process.env.REACTAPIURL}/houses`
+      console.log('url-->', url)
       const response = await axios.get(url)
       console.log(response)
       setHouses(response.data)
