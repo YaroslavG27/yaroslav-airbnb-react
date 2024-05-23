@@ -28,29 +28,26 @@ function Filter({ setHouses }) {
     e.preventDefault()
     const form = new FormData(e.target)
     const formObject = Object.fromEntries(form.entries())
-    let queryString = `${process.env.REACT_APP_API_URL}/houses?`
+    let queryArray = []
     if (e.target.location.value) {
-      queryString = `${process.env.REACT_APP_API_URL}/houses?location=${e.target.location.value}`
-      queryString = `${queryString}&`
+      queryArray.push(`location=${encodeURIComponent(e.target.location.value)}`)
     }
     if (e.target.min_rooms.value) {
-      queryString += `min_rooms=${e.target.min_rooms.value}&`
+      queryArray.push(`min_rooms=${e.target.min_rooms.value}`)
     }
     if (e.target.max_price.value) {
-      queryString += `max_price=${e.target.max_price.value}&`
+      queryArray.push(`max_price=${e.target.max_price.value}`)
     }
     if (e.target.sort.value) {
-      queryString += `sort=${e.target.sort.value}&`
+      queryArray.push(`sort=${e.target.sort.value}`)
     }
     if (e.target.search.value) {
-      queryString += `search=${e.target.search.value}&`
+      queryArray.push(`search=${e.target.search.value}`)
     }
-    if (queryString.endsWith('&')) {
-      queryString.replace('&', '')
-    }
+    let queryString = `${process.env.REACT_APP_API_URL}/houses?${queryArray.join('&')}`
     try {
       const response = await axios.get(queryString)
-      console.log(queryString)
+      console.log('query--->', queryString)
       setHouses(response.data)
     } catch (error) {
       console.error(error.message)
@@ -118,7 +115,6 @@ function Filter({ setHouses }) {
           <option selected value="" className="text-xs">
             Sort by
           </option>
-          <option>Location</option>
           <option value="price">Price: low to high</option>
           <option value="rooms">Rooms: high to low</option>
         </select>
