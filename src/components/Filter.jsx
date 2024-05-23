@@ -15,7 +15,7 @@ function Filter({ setHouses }) {
   const getLocations = async () => {
     try {
       const response = await axios.get(
-        'https://haiku-bnb.onrender.com/locations'
+        `${process.env.REACT_APP_API_URL}/locations`
       )
       console.log('response ---->', response)
       setLocations(response.data)
@@ -28,9 +28,9 @@ function Filter({ setHouses }) {
     e.preventDefault()
     const form = new FormData(e.target)
     const formObject = Object.fromEntries(form.entries())
-    let queryString = `https://haiku-bnb.onrender.com/houses?`
+    let queryString = `${process.env.REACT_APP_API_URL}/houses?`
     if (e.target.location.value) {
-      queryString = `https://haiku-bnb.onrender.com/houses?location=${e.target.location.value}`
+      queryString = `${process.env.REACT_APP_API_URL}/houses?location=${e.target.location.value}`
       queryString = `${queryString}&`
     }
     if (e.target.min_rooms.value) {
