@@ -15,9 +15,9 @@ function House() {
   const getHouse = async () => {
     try {
       let { data } = await axios.get(
-        `https://haiku-bnb.onrender.com/houses/${id}`
+        `${process.env.REACT_APP_API_URL}/houses/${id}`
       )
-
+      console.log('data--->', data)
       setHouse(data)
       setIsLoading(false)
     } catch (error) {
@@ -27,6 +27,7 @@ function House() {
 
   useEffect(() => {
     getHouse()
+
     // eslint-disable-next-line
   }, [isLoading, id])
 
@@ -44,13 +45,13 @@ function House() {
             <div className=" col-span-2">
               <div className="text-xl font-bold mt-5">{house.location}</div>
               <div className="text-sm text-gray-400 mt-5">
-                {house.rooms} rooms · {house.bathrooms} bathrooms
+                {house.bedrooms} rooms · {house.bathrooms} bathrooms
               </div>
               <div className=" flex gap-2 mt-5">
                 <div>
                   <img
                     className="rounded-full w-12 h-12"
-                    src={house.host.picture}
+                    src={house.host.profile_photo}
                     alt="Host Profile"
                   />
                 </div>
