@@ -80,7 +80,7 @@ function Profile() {
             <div className="flex-auto border-2 rounded-sm my-4">
               <input
                 type="text"
-                name="picture"
+                name="profile_photo"
                 onChange={(e) => setPicture(e.target.value)}
                 defaultValue={user.profile_photo}
                 className="p-2 w-full"
