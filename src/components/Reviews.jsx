@@ -55,17 +55,26 @@ function Reviews(props) {
             <p className="text-xs">0</p>
           </div>
           <div className=" my-2">
-            <form className="text-sm">
-              <textarea
-                className="border w-80 p-1"
-                name="house-review"
-                placeholder="Please leave a review for this house.."
-                cols="30"
-                rows="10"
-              ></textarea>
-              <button className="flex justify-center w-40 p-2 border rounded my2 text-white bg-[#FB7185]">
-                Submit Review
-              </button>
+            <form onSubmit={getReviews}>
+              <div className=" py-2 text-sm flex justify-start">
+                <input type="radio" name="rating" value="1" className="mr-1" />
+                <input type="radio" name="rating" value="2" className="mr-1" />
+                <input type="radio" name="rating" value="3" className="mr-1" />
+                <input type="radio" name="rating" value="4" className="mr-1" />
+                <input type="radio" name="rating" value="5" className="mr-1" />
+              </div>
+              <div className=" text-sm justify-start mt-3">
+                <textarea
+                  name="review_text"
+                  className=" border w-full col-span-8 text-sm pb-16 pr-16"
+                  placeholder="Please leave a review for this house..."
+                ></textarea>
+              </div>
+              <div className=" text-sm text-white mt-1">
+                <button className=" border bg-rose-400 p-2 rounded-md">
+                  Submit Review
+                </button>
+              </div>
             </form>
           </div>
         </div>
