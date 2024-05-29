@@ -24,17 +24,8 @@ function NavBar() {
                 My Listings
               </div>
             </Link>
-            <div className="flex justify-center items-center border-2 px-2 py-1  rounded-sm text-xs font-semibold hover:shadow">
-              <Link to="/profile">
-                <div className="flex items-center justify-items-stretch gap-2">
-                  <img
-                    src="https://randomuser.me/api/portraits/men/84.jpg"
-                    alt="Profile Pic"
-                    className="rounded-full w-6"
-                  />
-                  <p>Profile </p>
-                </div>
-              </Link>
+            <div className="flex justify-center items-center border-2 px-2 py-2  rounded-sm text-xs font-semibold hover:shadow">
+              <Link to="/profile">Profile</Link>
             </div>
           </div>
         </>
