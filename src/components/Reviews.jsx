@@ -83,12 +83,16 @@ function Review(props) {
           alt="profile pic"
           className="rounded-full w-8"
         />
-        <>
-          <p className="text-xs text-gray-400">22 Jan 2024</p>
-          <h6 className="text-xs">
-            {props.user.author.firstName} {props.user.author.lastName}
-          </h6>
-        </>
+        <div className=" flex-col ">
+          <>
+            <p className="text-xs text-gray-400">22 Jan 2024</p>
+          </>
+          <>
+            <h6 className="text-xs">
+              {props.user.author.firstName} {props.user.author.lastName}
+            </h6>
+          </>
+        </div>
       </div>
       <div className="flex gap-1 items-center pt-2">
         {[...new Array(props.user.rating)].map((i, index) => (
