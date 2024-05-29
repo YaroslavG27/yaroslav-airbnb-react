@@ -97,7 +97,7 @@ function Review(props) {
         <p className="text-xs">{props.user.rating}</p>
       </div>
       <div className="pt-2">
-        <p className="text-xs leading-1 ">{props.user.comment}</p>
+        <p className="text-xs leading-1 ">{props.user.content}</p>
       </div>
     </div>
   )
