@@ -19,10 +19,10 @@ function Listings() {
     const formObj = Object.fromEntries(form.entries())
 
     formObj.photos = photos
-
+    console.log('formOnj---> ', formObj)
     try {
       const response = await axios.post(
-        'https://haiku-bnb.onrender.com/houses',
+        `${process.env.REACT_APP_API_URL}/houses`,
         formObj
       )
     } catch (e) {
@@ -32,7 +32,7 @@ function Listings() {
   const getHouses = async (e) => {
     try {
       const response = await axios.get(
-        'https://haiku-bnb.onrender.com/listings'
+        `${process.env.REACT_APP_API_URL}/listings`
       )
 
       setHouses(response.data)
@@ -62,7 +62,7 @@ function Listings() {
                 <label className="text-xs text-gray-400 ">Bedrooms</label>
                 <input
                   type="number"
-                  name="rooms"
+                  name="bedrooms"
                   className="w-full border-2 rounded-sm p-2"
                   placeholder="2"
                 ></input>
@@ -77,7 +77,7 @@ function Listings() {
                   Price per Night
                 </label>
                 <input
-                  name="price"
+                  name="nightly_price"
                   type="number"
                   className="w-full border-2 rounded-sm p-2"
                   placeholder="140"
