@@ -7,12 +7,29 @@ import { faCommentDots } from '@fortawesome/free-regular-svg-icons'
 function Reviews(props) {
   const [reviews, setReviews] = useState([])
 
+  const createReview = async (e) => {
+    e.preventDefault()
+
+    const form = new FormData(e.target)
+    let formObject = Object.fromEntries(form.entries())
+
+    formObject.id = props.id
+    console.log('form--->', formObject)
+    let response = await axios.post(
+      `${process.env.REACT_APP_API_URL}/reviews`,
+      formObject
+    )
+    console.log('respond--->', response)
+    setReviews([...reviews, response.data])
+  }
+
   const getReviews = async () => {
     try {
       const url = `${process.env.REACT_APP_API_URL}/reviews?house_id=${props.id}`
       const response = await axios.get(url)
 
       setReviews(response.data)
+      console.log('props------->', props)
       console.log('review---->', response.data)
     } catch (error) {
       alert(error.message)
@@ -55,7 +72,7 @@ function Reviews(props) {
             <p className="text-xs">0</p>
           </div>
           <div className=" my-2">
-            <form onSubmit={getReviews}>
+            <form onSubmit={createReview}>
               <div className=" py-2 text-sm flex justify-start">
                 <input type="radio" name="rating" value="1" className="mr-1" />
                 <input type="radio" name="rating" value="2" className="mr-1" />
