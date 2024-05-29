@@ -4,6 +4,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faCommentDots } from '@fortawesome/free-regular-svg-icons'
 
 function HouseCard(props) {
+  console.log('props form house card---->', props)
   return (
     <div className="border rounded-md ">
       <Link
@@ -61,7 +62,7 @@ function HouseCard(props) {
               </div>
               <p className="flex text-xs font-bold gap-1 justify-center">
                 {props.house.nights} nights = $
-                {props.house.nights * props.house.price}
+                {props.house.nights * props.house.nightly_price}
               </p>
             </div>
           )}
