@@ -5,45 +5,48 @@ import axios from 'axios'
 axios.defaults.withCredentials = true
 
 function Listings() {
-  const [houses, setHouses] = useState([])
-
-  const listOfHouses = houses.map((house, index) => (
-    <HouseCard key={index} house={house} isListing={true} id={house.house_id} />
-  ))
-
-  const createHouse = async (e) => {
-    e.preventDefault()
-    const form = new FormData(e.target)
-    let photos = form.getAll('photos')
-
-    const formObj = Object.fromEntries(form.entries())
-
-    formObj.photos = photos
-    console.log('formOnj---> ', formObj)
+  const [listings, setListings] = useState([])
+  const [error, setError] = useState('')
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/listings`
+        )
+        setListings(response.data)
+      } catch (error) {
+        console.error('Error fetching listings:', error)
+      }
+    }
+    fetchListings()
+  }, [])
+  const createHouse = async (event) => {
+    event.preventDefault() // Prevent page reload
+    const formData = new FormData(event.target)
+    const formObject = Object.fromEntries(formData.entries())
+    formObject.photos = formData.getAll('photos')
+    console.log('formObject', formObject)
     try {
+      // Send houseData to the API
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/houses`,
-        formObj
+        formObject
       )
-    } catch (e) {
-      alert(e.message)
+      console.log(`response from post`, response)
+      //add error message
+      if (response.data.error) {
+        setError(response.data.error)
+      } else {
+        // Update state with the newly created house object
+        setListings((prevListings) => [...prevListings, response.data])
+      }
+    } catch (error) {
+      console.error('Error creating house:', error)
     }
   }
-  const getHouses = async (e) => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/listings`
-      )
-
-      setHouses(response.data)
-    } catch (e) {
-      alert(e.message)
-    }
-  }
-  useEffect(() => {
-    getHouses()
-  }, [])
-
+  const listOfListings = listings.map((house, index) => (
+    <HouseCard key={index} house={house} isListing={true} />
+  ))
   return (
     <div className="container mx-10">
       <div className="flex flex-col">
@@ -155,7 +158,7 @@ function Listings() {
         </div>
       </div>
       <div className=" grid grid-cols-5 grid-rows-2 gap-3 mt-3">
-        {listOfHouses}
+        {listOfListings}
       </div>
     </div>
   )
