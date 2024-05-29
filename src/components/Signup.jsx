@@ -31,7 +31,7 @@ function Signup() {
     const form = new FormData(e.target)
     const formObject = Object.fromEntries(form.entries())
 
-    const url = 'https://haiku-bnb.onrender.com/signup'
+    const url = `${process.env.REACT_APP_API_URL}/signup`
     try {
       const response = await axios.post(url, formObject)
       if (response.data.error) {
@@ -108,7 +108,7 @@ function Signup() {
               Profile Picture
             </label>
             <input
-              name="picture"
+              name="profile_photo"
               type="text"
               placeholder="https://.."
               className="border-2 rounded-md p-2 mb-2"
