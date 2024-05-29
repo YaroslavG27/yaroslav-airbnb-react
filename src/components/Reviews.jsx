@@ -9,10 +9,11 @@ function Reviews(props) {
 
   const getReviews = async () => {
     try {
-      const url = `https://haiku-bnb.onrender.com/reviews?house_id=${props.id}`
+      const url = `${process.env.REACT_APP_API_URL}/reviews?house_id=${props.id}`
       const response = await axios.get(url)
 
       setReviews(response.data)
+      console.log('review---->', response.data)
     } catch (error) {
       alert(error.message)
     }
@@ -78,7 +79,7 @@ function Review(props) {
     <div className="border col-span-2 p-2 mb-4 ">
       <div className="flex gap-2 justify-start">
         <img
-          src={props.user.author.picture}
+          src={props.user.author.profile_photo}
           alt="profile pic"
           className="rounded-full w-8"
         />
