@@ -16,10 +16,13 @@ function Login() {
     const email = formData.get('email')
     const password = formData.get('password')
 
-    const response = await axios.post('https://haiku-bnb.onrender.com/login', {
-      email,
-      password
-    })
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_URL}/login`,
+      {
+        email,
+        password
+      }
+    )
 
     if (response.data.error) {
       setError(response.data.error)
