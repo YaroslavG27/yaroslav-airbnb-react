@@ -71,7 +71,7 @@ function Profile() {
             <div>
               {
                 <img
-                  src={picture}
+                  src={user.profile_photo}
                   alt="Profile pic"
                   className="rounded-full w-14 mr-4"
                 />
@@ -82,7 +82,7 @@ function Profile() {
                 type="text"
                 name="picture"
                 onChange={(e) => setPicture(e.target.value)}
-                defaultValue={user.picture}
+                defaultValue={user.profile_photo}
                 className="p-2 w-full"
                 placeholder="https://..."
               />
