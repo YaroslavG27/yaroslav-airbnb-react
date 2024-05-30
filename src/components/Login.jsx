@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, link, Link } from 'react-router-dom'
+
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
@@ -37,11 +38,13 @@ function Login() {
       <div></div>
       <div className="border-2 mt-10 w-96">
         <div className="flex justify-center mt-5 mb-5">
-          <img
-            src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399114/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/logo-airbnb.png"
-            alt="airbnb"
-            width={80}
-          />
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399114/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/logo-airbnb.png"
+              alt="airbnb"
+              width={80}
+            />
+          </Link>
         </div>
         <form onSubmit={submitForm}>
           <div className="flex flex-col p-7">
@@ -64,7 +67,9 @@ function Login() {
         <div className="flex justify-start m-5 ml-6 text-sm">
           <p>
             New to Airbnb?
-            <span className=" text-[#FB7185]"> Create an Account</span>
+            <Link to="/signup">
+              <span className=" text-[#FB7185]"> Create an Account</span>
+            </Link>
           </p>
         </div>
       </div>

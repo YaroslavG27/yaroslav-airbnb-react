@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
@@ -50,11 +50,13 @@ function Signup() {
           <form onSubmit={submitForm} className="grid">
             {/* Logo */}
             <div className="flex justify-center py-4">
-              <img
-                src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399114/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/logo-airbnb.png"
-                alt="logo"
-                className="w-20"
-              />
+              <Link to="/">
+                <img
+                  src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399114/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/logo-airbnb.png"
+                  alt="logo"
+                  className="w-20"
+                />
+              </Link>
             </div>
             <label className="flex-auto text-xs font-semibold text-gray-600 pr-2">
               First Name
