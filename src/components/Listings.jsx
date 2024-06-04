@@ -25,7 +25,6 @@ function Listings() {
     const formData = new FormData(event.target)
     const formObject = Object.fromEntries(formData.entries())
     formObject.photos = formData.getAll('photos')
-    console.log('formObject', formObject)
     try {
       // Send houseData to the API
       const response = await axios.post(

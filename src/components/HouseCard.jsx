@@ -67,12 +67,12 @@ function HouseCard(props) {
           )}
           {props.isListing && (
             <div className="flex gap-2 m-2 mt-0 text-xs">
-              <Link to={`/houses/${props.id}`}>
+              <Link to={`/houses/${props.house.house_id}`}>
                 <button className="border rounded p-0.5 px-2 hover:shadow">
                   View
                 </button>
               </Link>
-              <Link to={`/houses/${props.id}/edit`}>
+              <Link to={`/houses/${props.house.house_id}/edit`}>
                 <button className="border rounded p-0.5 px-2 hover:shadow">
                   Edit
                 </button>
