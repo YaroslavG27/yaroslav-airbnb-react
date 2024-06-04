@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+axios.defaults.withCredentials = true
 
 function HouseEdit() {
-  const { id } = useParams()
+  const params = useParams()
+
   const [house, setHouse] = useState({
     location: '',
     rooms: '',
@@ -19,7 +21,7 @@ function HouseEdit() {
     const fetchHouse = async () => {
       try {
         const response = await axios.get(
-          `https://haiku-bnb.onrender.com/houses/${id}`
+          `${process.env.REACT_APP_API_URL}/houses/${params.id}`
         )
 
         setHouse(response.data)
@@ -29,7 +31,7 @@ function HouseEdit() {
     }
 
     fetchHouse()
-  }, [id])
+  }, [params.id])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -44,12 +46,12 @@ function HouseEdit() {
 
     try {
       const response = await axios.patch(
-        `https://haiku-bnb.onrender.com/houses/${id}`,
+        `${process.env.REACT_APP_API_URL}/houses/${params.id}`,
         house
       )
 
       if (response.status === 200) {
-        window.location.href = `/houses/${id}`
+        window.location.href = `/houses/${params.id}`
       } else {
         console.error('Failed to update house:', response)
       }
