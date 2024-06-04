@@ -3,18 +3,16 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 axios.defaults.withCredentials = true
 
 function HouseEdit() {
   const params = useParams()
+  const navigate = useNavigate()
 
   const [house, setHouse] = useState({
-    location: '',
-    rooms: '',
-    bathrooms: '',
-    description: '',
-    price: '',
-    images: ['', '', '', '', '', '', '', '', '']
+    images: []
   })
 
   useEffect(() => {
@@ -41,22 +39,26 @@ function HouseEdit() {
     }))
   }
 
+  //update the data with patch
   const updateHouse = async (e) => {
-    e.preventDefault()
-
+    //1. prevent browser from reload
     try {
-      const response = await axios.patch(
+      e.preventDefault()
+      //2 get data from form from e.target
+      const form = new FormData(e.target)
+      const formObj = Object.fromEntries(form.entries())
+      //retrieves all 'images' field in an array of strings
+      formObj.images = form.getAll('images')
+      formObj.house_id = params
+      console.log('formObject--->', formObj)
+      let response = await axios.patch(
         `${process.env.REACT_APP_API_URL}/houses/${params.id}`,
-        house
+        formObj
       )
-
-      if (response.status === 200) {
-        window.location.href = `/houses/${params.id}`
-      } else {
-        console.error('Failed to update house:', response)
-      }
-    } catch (error) {
-      console.error('Error updating house:', error)
+      setHouse(response.data)
+      navigate(`/houses/${params.id}`)
+    } catch (e) {
+      alert(e.message)
     }
   }
   return (
@@ -78,10 +80,10 @@ function HouseEdit() {
           />
           <div className="text-sm mt-2 text-gray-400">Bedrooms</div>
           <input
-            name="rooms"
+            name="bedrooms"
             className="border rounded p-1 w-full"
             type="number"
-            defaultValue={house.rooms}
+            defaultValue={house.bedrooms}
             onChange={handleInputChange}
           />
           <div className="text-sm mt-2 text-gray-400">Bathrooms</div>
@@ -94,10 +96,10 @@ function HouseEdit() {
           />
           <div className="text-sm mt-2 text-gray-400">Price per Night</div>
           <input
-            name="price"
+            name="nightly_price"
             className="border rounded p-1 w-full"
             type="number"
-            defaultValue={house.price}
+            defaultValue={house.nightly_price}
             onChange={handleInputChange}
           />
           <div className="text-sm mt-2 text-gray-400">Description</div>
