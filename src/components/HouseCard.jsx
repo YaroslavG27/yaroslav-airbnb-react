@@ -57,12 +57,12 @@ function HouseCard(props) {
           {props.isBooking && (
             <div className="grid bg-[#ECFDF5] rounded-2 p-2 m-2 place-content-center">
               <div className="flex">
-                <p className="text-xs ">{props.house.from_date} -</p>
-                <p className="text-xs pl-1"> {props.house.to_date}</p>
+                <p className="text-xs ">{props.house.arrival_date} -</p>
+                <p className="text-xs pl-1"> {props.house.departure_date}</p>
               </div>
               <p className="flex text-xs font-bold gap-1 justify-center">
-                {props.house.nights} nights = $
-                {props.house.nights * props.house.price}
+                {props.house.total_night} nights = $
+                {props.house.total_night * props.house.nightly_price}
               </p>
             </div>
           )}
