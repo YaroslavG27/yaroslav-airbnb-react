@@ -17,10 +17,10 @@ function Booking(props) {
     const formObj = Object.fromEntries(form.entries())
 
     formObj.house_id = props.house.house_id
-
+    console.log('formObj---->', formObj)
     try {
       const response = await axios.post(
-        'https://haiku-bnb.onrender.com/bookings',
+        `${process.env.REACT_APP_API_URL}/bookings`,
         formObj
       )
       setBooked(true)
