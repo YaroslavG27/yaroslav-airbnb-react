@@ -17,7 +17,7 @@ function Booking(props) {
     const formObj = Object.fromEntries(form.entries())
 
     formObj.house_id = props.house.house_id
-    console.log('formObj---->', formObj)
+
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/bookings`,
@@ -34,14 +34,14 @@ function Booking(props) {
       const oneDay = 24 * 60 * 60 * 1000
       const nights = ((startDate - endDate) / oneDay) * -1
       setNights(nights)
-      setTotalPrice(nights * props.house.price)
+      setTotalPrice(nights * props.house.nightly_price)
     }
     // eslint-disable-next-line
   }, [startDate, endDate])
   return (
     <div className="border-2 mt-5 p-2">
       <div>
-        <span className=" font-bold">${props.house.price} </span>
+        <span className=" font-bold">${props.house.nightly_price} </span>
         <span className=" text-sm text-gray-400 font-bold">/ night</span>
       </div>
       {!booked ? (
@@ -49,20 +49,20 @@ function Booking(props) {
           <form onSubmit={createBooking}>
             <input
               type="date"
-              name="from_date"
+              name="arrival_date"
               className="border mr-1 mb-2"
               onChange={(e) => setStartDate(new Date(e.target.value))}
             />
             <input
               type="date"
-              name="to_date"
+              name="departure_date"
               className="border"
               onChange={(e) => {
                 setEndDate(new Date(e.target.value))
               }}
             />
             <textarea
-              name="message"
+              name="comment"
               className="border w-96 text-sm p-1"
               placeholder="Please send a message to the host.."
               cols="30"
