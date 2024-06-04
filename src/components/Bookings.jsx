@@ -12,7 +12,7 @@ function Bookings() {
   const getData = async () => {
     try {
       const response = await axios.get(
-        'https://haiku-bnb.onrender.com/bookings'
+        `${process.env.REACT_APP_API_URL}/bookings`
       )
       if (response.data.error) {
         navigate('/')
