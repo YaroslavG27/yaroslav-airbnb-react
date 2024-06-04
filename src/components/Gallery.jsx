@@ -5,12 +5,14 @@ function Gallery(props) {
 
   return (
     <div className=" grid grid-cols-2 gap-8">
-      <div className="border rounded">
-        <img
-          className="rounded-md w-full h-full"
-          src={selectedImage}
-          alt="house"
-        />
+      <div className="rounded">
+        <div className=" aspect-video">
+          <img
+            className="rounded-md w-full h-full object-cover"
+            src={selectedImage}
+            alt="house"
+          />
+        </div>
       </div>
       <div className=" grid grid-cols-3 gap-2">
         {props.image.map((image, index) => (
@@ -21,7 +23,7 @@ function Gallery(props) {
             onClick={(event) => {
               setSelectedImage(event.target.src)
             }}
-            className="rounded-md w-full"
+            className="rounded-md w-full object-cover aspect-video"
           />
         ))}
       </div>
