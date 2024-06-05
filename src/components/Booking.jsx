@@ -47,34 +47,36 @@ function Booking(props) {
       {!booked ? (
         <div>
           <form onSubmit={createBooking}>
-            <input
-              type="date"
-              name="arrival_date"
-              className="border mr-1 mb-2"
-              onChange={(e) => setStartDate(new Date(e.target.value))}
-            />
-            <input
-              type="date"
-              name="departure_date"
-              className="border"
-              onChange={(e) => {
-                setEndDate(new Date(e.target.value))
-              }}
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+              <input
+                type="date"
+                name="arrival_date"
+                className="border mr-1 mb-2"
+                onChange={(e) => setStartDate(new Date(e.target.value))}
+              />
+              <input
+                type="date"
+                name="departure_date"
+                className="border"
+                onChange={(e) => {
+                  setEndDate(new Date(e.target.value))
+                }}
+              />
+            </div>
             <textarea
               name="comment"
-              className="border w-96 text-sm p-1"
+              className="border w-full text-sm p-2 rounded mb-4"
               placeholder="Please send a message to the host.."
               cols="30"
               rows="10"
             ></textarea>
-            <div className=" flex justify-between items-center">
-              <div>
+            <div className="flex flex-col sm:flex-row justify-between items-center">
+              <div className="mb-2 sm:mb-0">
                 {nights} nights ={' '}
                 <span className="font-bold">${totalPrice}</span>
               </div>
               <div>
-                <button className="border rounded p-2 text-white bg-[#FB7185]">
+                <button className="border rounded p-2 text-white bg-[#FB7185] w-full sm:w-auto">
                   Reserve
                 </button>
               </div>
@@ -82,7 +84,7 @@ function Booking(props) {
           </form>
         </div>
       ) : (
-        <div className="flex justify-center items-center bg-green-200 p-4">
+        <div className="flex justify-center items-center bg-green-200 p-4 rounded">
           Thanks for your reservation!
         </div>
       )}
