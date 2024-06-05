@@ -44,9 +44,9 @@ function Signup() {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-center">
-        <div className="flex flex-col justify-center border-2 p-5 rounded-md w-80 mt-8">
+        <div className="flex flex-col justify-center border-2 p-5 rounded-md w-full max-w-md mt-8">
           <form onSubmit={submitForm} className="grid">
             {/* Logo */}
             <div className="flex justify-center py-4">
@@ -58,23 +58,23 @@ function Signup() {
                 />
               </Link>
             </div>
-            <label className="flex-auto text-xs font-semibold text-gray-600 pr-2">
+            <label className="text-xs font-semibold text-gray-600">
               First Name
             </label>
             <input
               name="first_name"
               type="text"
-              className="border-2 rounded-md p-2 mb-2"
+              className="border-2 rounded-md p-2 mb-2 w-full"
             />
-            <label className="text-xs font-semibold text-gray-600 pr-2">
+            <label className="text-xs font-semibold text-gray-600">
               Last Name
             </label>
             <input
               name="last_name"
               type="text"
-              className="border-2 rounded-md p-2 mb-2"
+              className="border-2 rounded-md p-2 mb-2 w-full"
             />
-            <label className="block text-xs font-semibold text-gray-600 pr-2">
+            <label className="block text-xs font-semibold text-gray-600">
               Email
               {!validEmail && (
                 <span className="text-xs text-red-400 font-light ml-1">
@@ -85,12 +85,12 @@ function Signup() {
             <input
               type="email"
               name="email"
-              className={`border-2 rounded-md p-2 mb-2 `}
+              className={`border-2 rounded-md p-2 mb-2 w-full `}
               onChange={(e) => {
                 validateEmail(e.target.value)
               }}
             />
-            <label className={`block text-xs font-semibold text-gray-600 pr-2`}>
+            <label className={`block text-xs font-semibold text-gray-600l`}>
               Password
               {!validPassword && (
                 <span className="text-xs text-red-400 font-light ml-1">
@@ -101,31 +101,31 @@ function Signup() {
             <input
               name="password"
               type="password"
-              className="border-2 rounded-md p-2 mb-2"
+              className="border-2 rounded-md p-2 mb-2 w-full"
               onChange={(e) => {
                 validatePassword(e.target.value)
               }}
             />
-            <label className="text-xs font-semibold text-gray-600 pr-2">
+            <label className="text-xs font-semibold text-gray-600">
               Profile Picture
             </label>
             <input
               name="profile_photo"
               type="text"
               placeholder="https://.."
-              className="border-2 rounded-md p-2 mb-2"
+              className="border-2 rounded-md p-2 mb-2 w-full"
             />
-            <button className="bg-[#FB7185] text-white py-3 rounded-md mb-4">
+            <button className="bg-[#FB7185] text-white py-3 rounded-md mb-4 w-full">
               Register
             </button>
 
             {error && (
-              <span className=" flex justify-center text-xs text-red-400 font-light mt-0 mb-4">
+              <span className="flex justify-center text-xs text-red-400 font-light mt-0 mb-4">
                 {error}
               </span>
             )}
           </form>
-          <p className="text-xs font-semibold">
+          <p className="text-xs font-semibold text-center">
             Already have an account?
             <a href="/login" className="text-[#FB7185] underline pl-2">
               Login here
