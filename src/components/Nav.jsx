@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function NavBar() {
   const isLoggedIn = localStorage.getItem('isLoggedIn')
   return (
-    <nav className="flex justify-between items-center p-2">
+    <nav className="flex flex-col items-center p-3 gap-2 md:justify-between md:flex-row">
       <Link to="/">
         <img
           src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399114/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/logo-airbnb.png"
