@@ -47,13 +47,13 @@ function Listings() {
     <HouseCard key={index} house={house} isListing={true} />
   ))
   return (
-    <div className="container mx-10">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-10">
       <div className="flex flex-col">
         <NavBar />
         <div className="border-2 rounded-sm p-4">
           <h1 className="text-sm mb-4">List a House</h1>
           <form onSubmit={createHouse}>
-            <div className="grid grid-cols-2 gap-32">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-32">
               <div>
                 <label className="text-xs text-gray-400 ">Location</label>
                 <input
@@ -91,9 +91,6 @@ function Listings() {
                   className="w-full border-2 rounded-sm p-2"
                   placeholder="wonderfull appartment with stunning views"
                 ></textarea>
-                <button className="bg-[#FB7185] text-white p-2 rounded-sm mt-2">
-                  List house
-                </button>
               </div>
               <div>
                 <label className="text-xs text-gray-400">Photos</label>
@@ -153,10 +150,13 @@ function Listings() {
                 ></input>
               </div>
             </div>
+            <button className="bg-[#FB7185] text-white p-2 rounded-sm mt-2">
+              List house
+            </button>
           </form>
         </div>
       </div>
-      <div className=" grid grid-cols-5 grid-rows-2 gap-3 mt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-3">
         {listOfListings}
       </div>
     </div>
