@@ -28,9 +28,9 @@ function Bookings() {
   }, [])
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <NavBar />
-      <div className=" grid grid-cols-5 grid-rows-2 gap-3 mt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-3">
         {bookings.map((booking, index) => (
           <HouseCard key={index} house={booking} isBooking={true} />
         ))}
