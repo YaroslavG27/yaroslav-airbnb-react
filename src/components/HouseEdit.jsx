@@ -50,7 +50,7 @@ function HouseEdit() {
       //retrieves all 'images' field in an array of strings
       formObj.images = form.getAll('images')
       formObj.house_id = params
-      console.log('formObject--->', formObj)
+
       let response = await axios.patch(
         `${process.env.REACT_APP_API_URL}/houses/${params.id}`,
         formObj

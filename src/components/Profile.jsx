@@ -29,7 +29,7 @@ function Profile() {
     e.preventDefault()
     const form = new FormData(e.target)
     const formObj = Object.fromEntries(form.entries())
-    console.log(formObj)
+
     try {
       const { data } = await axios.patch(
         `${process.env.REACT_APP_API_URL}/profile`,
@@ -47,7 +47,7 @@ function Profile() {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/profile`
       )
-      console.log({ data })
+
       localStorage.removeItem('isLoggedIn')
       navigate('/')
     } catch (err) {

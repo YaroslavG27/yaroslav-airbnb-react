@@ -17,7 +17,7 @@ function House() {
       let { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/houses/${id}`
       )
-      console.log('data--->', data)
+
       setHouse(data)
       setIsLoading(false)
     } catch (error) {

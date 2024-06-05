@@ -31,7 +31,7 @@ function Listings() {
         `${process.env.REACT_APP_API_URL}/houses`,
         formObject
       )
-      console.log(`response from post`, response)
+
       //add error message
       if (response.data.error) {
         setError(response.data.error)

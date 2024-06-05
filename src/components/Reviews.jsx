@@ -14,12 +14,12 @@ function Reviews(props) {
     let formObject = Object.fromEntries(form.entries())
 
     formObject.id = props.id
-    console.log('form--->', formObject)
+
     let response = await axios.post(
       `${process.env.REACT_APP_API_URL}/reviews`,
       formObject
     )
-    console.log('respond--->', response)
+
     setReviews([...reviews, response.data])
   }
 
@@ -29,8 +29,6 @@ function Reviews(props) {
       const response = await axios.get(url)
 
       setReviews(response.data)
-      console.log('props------->', props)
-      console.log('review---->', response.data)
     } catch (error) {
       alert(error.message)
     }

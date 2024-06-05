@@ -47,7 +47,7 @@ function Filter({ setHouses }) {
     let queryString = `${process.env.REACT_APP_API_URL}/houses?${queryArray.join('&')}`
     try {
       const response = await axios.get(queryString)
-      console.log('query--->', queryString)
+
       setHouses(response.data)
     } catch (error) {
       console.error(error.message)
