@@ -14,7 +14,7 @@ function HouseCard(props) {
         <div>
           <div>
             <img
-              className=" h-52 w-full rounded-t-md"
+              className="h-52 w-full rounded-t-md object-cover"
               src={props.house.url}
               alt="house"
             />
