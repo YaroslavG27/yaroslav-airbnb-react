@@ -4,7 +4,7 @@ function Gallery(props) {
   const [selectedImage, setSelectedImage] = useState(props.image[0])
 
   return (
-    <div className=" grid grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
       <div className="rounded">
         <div className=" aspect-video">
           <img
@@ -14,7 +14,7 @@ function Gallery(props) {
           />
         </div>
       </div>
-      <div className=" grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-4">
         {props.image.map((image, index) => (
           <img
             key={index}
