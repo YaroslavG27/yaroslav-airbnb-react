@@ -62,10 +62,10 @@ function HouseEdit() {
     }
   }
   return (
-    <div className=" mx-20 mt-2">
+    <div className="mx-4 sm:mx-10 md:mx-20 mt-2">
       <NavBar />
       <form
-        className="border grid grid-cols-2 gap-28 mt-2 p-3"
+        className="border grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-28 mt-2 p-3"
         onSubmit={updateHouse}
       >
         <div>
@@ -111,16 +111,6 @@ function HouseEdit() {
             defaultValue={house.description}
             onChange={handleInputChange}
           ></textarea>
-          <div className=" flex gap-2">
-            <button className="border rounded p-2 text-white bg-[#FB7185] hover:shadow">
-              Save Changes
-            </button>
-            <Link to="/listings">
-              <button className="border rounded p-2 hover:shadow">
-                Cancel
-              </button>
-            </Link>
-          </div>
         </div>
         <div className=" flex flex-col p-2 my-5">
           <span className="text-sm text-gray-400">Photos</span>
@@ -187,6 +177,14 @@ function HouseEdit() {
             className="border rounded mb-2 p-1"
             defaultValue={house.images[8]}
           />
+        </div>
+        <div className=" flex gap-2">
+          <button className="border rounded p-2 text-white bg-[#FB7185] hover:shadow">
+            Save Changes
+          </button>
+          <Link to="/listings">
+            <button className="border rounded p-2 hover:shadow">Cancel</button>
+          </Link>
         </div>
       </form>
     </div>
