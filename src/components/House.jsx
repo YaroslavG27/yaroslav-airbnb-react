@@ -41,7 +41,7 @@ function House() {
           {[...new Array(house.images)].map((image, index) => (
             <Gallery image={image} key={index} />
           ))}
-          <div className=" border-b-2 mb-4 pb-5 grid grid-cols-3 gap-28">
+          <div className=" border-b-2 mb-4 pb-5 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-28">
             <div className=" col-span-2">
               <div className="text-xl font-bold mt-5">{house.location}</div>
               <div className="text-sm text-gray-400 mt-5">
