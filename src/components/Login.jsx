@@ -34,9 +34,9 @@ function Login() {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-28">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-28">
       <div></div>
-      <div className="border-2 mt-10 w-96">
+      <div className="border-2 mt-10 w-full max-w-md mx-auto sm:w-96">
         <div className="flex justify-center mt-5 mb-5">
           <Link to="/">
             <img
@@ -47,24 +47,28 @@ function Login() {
           </Link>
         </div>
         <form onSubmit={submitForm}>
-          <div className="flex flex-col p-7">
+          <div className="flex flex-col p-4 sm:p-7">
             <div className="text-sm text-gray-400">Email</div>
-            <input type="email" name="email" className="border rounded h-10" />
+            <input
+              type="email"
+              name="email"
+              className="border rounded h-10 mb-2 sm:mb-0"
+            />
             <div className="text-sm text-gray-400 mt-2">Password</div>
             <input
               type="password"
               name="password"
-              className="border rounded h-10"
+              className="border rounded h-10 mb-2 sm:mb-0"
             />
           </div>
           <div className="flex justify-center mt-1 p-2">
-            <button className="flex justify-center border rounded bg-[#FB7185] text-white px-36 py-3">
+            <button className="flex justify-center border rounded bg-[#FB7185] text-white px-20 sm:px-36 py-3">
               Login
             </button>
           </div>
         </form>
-        <div className="pl-8 text-red-600 text-sm">{error}</div>
-        <div className="flex justify-start m-5 ml-6 text-sm">
+        <div className="pl-4 sm:pl-8 text-red-600 text-sm">{error}</div>
+        <div className="flex justify-start m-5 ml-4 sm:ml-6 text-sm">
           <p>
             New to Airbnb?
             <Link to="/signup">

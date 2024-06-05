@@ -127,9 +127,9 @@ function Signup() {
           </form>
           <p className="text-xs font-semibold text-center">
             Already have an account?
-            <a href="/login" className="text-[#FB7185] underline pl-2">
-              Login here
-            </a>
+            <Link to="/login">
+              <div className="text-[#FB7185] underline pl-2">Login here</div>
+            </Link>
           </p>
         </div>
       </div>
