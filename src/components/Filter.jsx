@@ -61,13 +61,13 @@ function Filter({ setHouses }) {
   return (
     <form
       onSubmit={submitForm}
-      className=" flex bg-[#E5E7EB] p-2 rounded-md gap-2"
+      className="flex flex-col flex-wrap bg-[#E5E7EB] p-2 rounded-md gap-2 lg:flex-row"
     >
       {/* The form should wrap all elements, therefore it 
   should wrap the "grid" too, to avoid breaking it. */}
 
       {/* Location */}
-      <div className="flex w-full bg-white justify-left items-center text-xs rounded-md h-9 p-2">
+      <div className="flex flex-1 bg-white justify-left items-center text-xs rounded-md h-9 p-2">
         <FontAwesomeIcon icon={faHouse} className="p-2" />
         <select name="location" className="w-full">
           <option selected value="" className="text-xs">
@@ -81,7 +81,7 @@ function Filter({ setHouses }) {
         </select>
       </div>
       {/* Rooms */}
-      <div className=" flex w-full bg-white justify-left items-center text-xs rounded-md h-9 p-2">
+      <div className="flex flex-1 bg-white justify-left items-center text-xs rounded-md h-9 p-2">
         <FontAwesomeIcon icon={faBed} className="p-2 " />
         <select name="min_rooms" className="w-full">
           <option selected value="" className="text-xs">
@@ -95,22 +95,22 @@ function Filter({ setHouses }) {
         </select>
       </div>
       {/* Max Price */}
-      <div className=" bg-white flex w-full justify-left items-center rounded-md h-9">
+      <div className="flex flex-1 bg-white justify-left items-center rounded-md h-9 p-2">
         <FontAwesomeIcon icon={faDollarSign} className="text-xs p-2" />
 
         <input
           name="max_price"
           type="number"
           placeholder="max price"
-          className="text-sm rounded-sm p-2"
+          className="w-full text-sm rounded-sm p-2"
         />
       </div>
       {/* sort by */}
-      <div className=" flex w-full bg-white justify-left items-center text-xs rounded-md h-9 p-2">
+      <div className="flex flex-1 bg-white justify-left items-center text-xs rounded-md h-9 p-2">
         <FontAwesomeIcon icon={faSort} className="p-2" />
         <select
           name="sort"
-          className=" flex-auto text-xs font-semibold rounded-sm p-2"
+          className="w-full text-xs font-semibold rounded-sm p-2"
         >
           <option selected value="" className="text-xs">
             Sort by
@@ -120,13 +120,15 @@ function Filter({ setHouses }) {
         </select>
       </div>
       {/* seach by keywords */}
-      <input
-        name="search"
-        type="text"
-        placeholder="keywords.."
-        className=" flex w-full bg-white justify-left items-center text-xs rounded-md h-9 p-2"
-      />
-      <button className="bg-[#FB7185] p-2 text-white flex items-center rounded-md h-9">
+      <div className="flex flex-1 bg-white justify-left items-center text-xs rounded-md h-9 p-2">
+        <input
+          name="search"
+          type="text"
+          placeholder="keywords.."
+          className="w-full text-xs"
+        />
+      </div>
+      <button className="w-full md:w-auto bg-[#FB7185] p-2 text-white flex items-center justify-center rounded-md h-9">
         Search
       </button>
       {/* end seach */}
