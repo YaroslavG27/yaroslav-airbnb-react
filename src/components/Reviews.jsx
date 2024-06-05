@@ -43,10 +43,10 @@ function Reviews(props) {
 
   let totReviews = reviews.length
   return (
-    <div>
-      <div className="grid grid-cols-3 gap-x-32 p-2">
-        <div className="col-span-2">
-          <div className="flex items-center gap-1">
+    <div className="p-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2">
+          <div className="flex items-center gap-1 mb-4">
             <FontAwesomeIcon icon={faCommentDots} className="text-gray-400" />
             <h3 className="text-lg font-bold">{totReviews} Reviews</h3>
           </div>
@@ -61,9 +61,9 @@ function Reviews(props) {
             <Review key={index} user={review} />
           ))}
         </div>
-        <div className="border p-4">
-          <p className="text-sm font-bold">Leave a review</p>
-          <div className="flex gap-1 items-center my-2">
+        <div className="border p-4 rounded-lg">
+          <p className="text-sm font-bold mb-2">Leave a review</p>
+          <div className="flex gap-1 items-center mb-4">
             <FontAwesomeIcon icon={faStar} className="text-[#FBBF24] text-xs" />
             <FontAwesomeIcon icon={faStar} className="text-[#FBBF24] text-xs" />
             <FontAwesomeIcon icon={faStar} className="text-[#FBBF24] text-xs" />
@@ -73,7 +73,7 @@ function Reviews(props) {
           </div>
           <div className=" my-2">
             <form onSubmit={createReview}>
-              <div className=" py-2 text-sm flex justify-start">
+              <div className="py-2 text-sm flex justify-start mb-4">
                 <input type="radio" name="rating" value="1" className="mr-1" />
                 <input type="radio" name="rating" value="2" className="mr-1" />
                 <input type="radio" name="rating" value="3" className="mr-1" />
@@ -83,12 +83,14 @@ function Reviews(props) {
               <div className=" text-sm justify-start mt-3">
                 <textarea
                   name="review_text"
-                  className=" border w-full col-span-8 text-sm pb-16 pr-16"
+                  className="border w-full text-sm p-2 rounded mb-4"
                   placeholder="Please leave a review for this house..."
+                  cols="30"
+                  rows="4"
                 ></textarea>
               </div>
               <div className=" text-sm text-white mt-1">
-                <button className=" border bg-rose-400 p-2 rounded-md">
+                <button className="border bg-rose-400 p-2 rounded-md text-white w-full">
                   Submit Review
                 </button>
               </div>
@@ -102,12 +104,12 @@ function Reviews(props) {
 
 function Review(props) {
   return (
-    <div className="border col-span-2 p-2 mb-4 ">
-      <div className="flex gap-2 justify-start">
+    <div className="border p-4 rounded-lg mb-4">
+      <div className="flex gap-2 items-center mb-2">
         <img
           src={props.user.author.profile_photo}
           alt="profile pic"
-          className="rounded-full w-8"
+          className="rounded-full w-8 h-8"
         />
         <div className=" flex-col ">
           <>
@@ -120,9 +122,13 @@ function Review(props) {
           </>
         </div>
       </div>
-      <div className="flex gap-1 items-center pt-2">
+      <div className="flex gap-1 items-center mb-2">
         {[...new Array(props.user.rating)].map((i, index) => (
-          <FontAwesomeIcon icon={faStar} className="text-[#FBBF24] text-xs" />
+          <FontAwesomeIcon
+            key={index}
+            icon={faStar}
+            className="text-[#FBBF24] text-xs"
+          />
         ))}
         <p className="text-xs">{props.user.rating}</p>
       </div>
