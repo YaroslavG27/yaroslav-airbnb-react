@@ -13,21 +13,19 @@ function Reviews(props) {
     const form = new FormData(e.target)
     let formObject = Object.fromEntries(form.entries())
 
-    formObject.id = props.id
-
+    formObject.house_id = props.id
     let response = await axios.post(
       `${process.env.REACT_APP_API_URL}/reviews`,
       formObject
     )
-
     setReviews([...reviews, response.data])
+    getReviews()
   }
 
   const getReviews = async () => {
     try {
       const url = `${process.env.REACT_APP_API_URL}/reviews?house_id=${props.id}`
       const response = await axios.get(url)
-
       setReviews(response.data)
     } catch (error) {
       alert(error.message)
@@ -80,7 +78,7 @@ function Reviews(props) {
               </div>
               <div className=" text-sm justify-start mt-3">
                 <textarea
-                  name="review_text"
+                  name="content"
                   className="border w-full text-sm p-2 rounded mb-4"
                   placeholder="Please leave a review for this house..."
                   cols="30"
@@ -101,11 +99,12 @@ function Reviews(props) {
 }
 
 function Review(props) {
+  const author = props.user.author || {}
   return (
     <div className="border p-4 rounded-lg mb-4">
       <div className="flex gap-2 items-center mb-2">
         <img
-          src={props.user.author.profile_photo}
+          src={author.profile_photo}
           alt="profile pic"
           className="rounded-full w-8 h-8"
         />
@@ -115,7 +114,7 @@ function Review(props) {
           </>
           <>
             <h6 className="text-xs">
-              {props.user.author.firstName} {props.user.author.lastName}
+              {author.firstName} {author.lastName}
             </h6>
           </>
         </div>
